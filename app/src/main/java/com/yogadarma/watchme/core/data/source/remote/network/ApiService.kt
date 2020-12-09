@@ -21,4 +21,9 @@ interface ApiService {
     suspend fun getNowPlayingTVShow(
         @Query("api_key") apiKey: String = Constant.API_KEY
     ): ListTVShowResponse
+
+    @GET("tv/popular")
+    suspend fun getPopularTVShow(
+        @Query("api_key") apiKey: String = Constant.API_KEY
+    ): ListTVShowResponse
 }

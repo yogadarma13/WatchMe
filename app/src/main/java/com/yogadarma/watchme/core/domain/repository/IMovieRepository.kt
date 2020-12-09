@@ -10,4 +10,6 @@ interface IMovieRepository {
     fun getAllPopularMovie(): Flow<Resource<List<Movie>>>
 
     fun getAllNowPlayingTVShow(): Flow<Resource<List<Movie>>>
+
+    fun getAllPopularTVShow(): Flow<Resource<List<Movie>>>
 }

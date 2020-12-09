@@ -58,4 +58,20 @@ class RemoteDataSource(private val apiService: ApiService) {
             }
         }.flowOn(Dispatchers.IO)
     }
+
+    suspend fun getAllPopularTVShow(): Flow<ApiResponse<List<TVShowResponse>>> {
+        return flow {
+            try {
+                val response = apiService.getPopularTVShow()
+                val tvShows = response.results
+                if (tvShows.isNotEmpty()) {
+                    emit(ApiResponse.Success(tvShows))
+                } else {
+                    emit(ApiResponse.Empty)
+                }
+            } catch (e: Exception) {
+                emit(ApiResponse.Error(e.toString()))
+            }
+        }.flowOn(Dispatchers.IO)
+    }
 }
