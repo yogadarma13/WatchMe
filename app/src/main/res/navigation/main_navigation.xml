@@ -13,10 +13,18 @@
         <action
             android:id="@+id/action_splashFragment_to_movieFragment"
             app:destination="@id/movieFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_tvShowFragment"
+            app:destination="@id/tvShowFragment" />
     </fragment>
     <fragment
         android:id="@+id/movieFragment"
         android:name="com.yogadarma.watchme.presentation.movie.MovieFragment"
         android:label="fragment_movie"
         tools:layout="@layout/fragment_movie" />
+    <fragment
+        android:id="@+id/tvShowFragment"
+        android:name="com.yogadarma.watchme.presentation.tvshow.TvShowFragment"
+        android:label="fragment_tv_show"
+        tools:layout="@layout/fragment_tv_show" />
 </navigation>

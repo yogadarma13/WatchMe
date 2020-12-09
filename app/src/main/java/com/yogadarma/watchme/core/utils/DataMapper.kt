@@ -2,12 +2,12 @@ package com.yogadarma.watchme.core.utils
 
 import com.yogadarma.watchme.core.data.source.local.entity.MovieEntity
 import com.yogadarma.watchme.core.data.source.remote.response.MovieResponse
+import com.yogadarma.watchme.core.data.source.remote.response.TVShowResponse
 import com.yogadarma.watchme.core.domain.model.Movie
 
 object DataMapper {
-    fun mapResponsesToEntities(
+    fun mapMovieResponsesToEntities(
         input: List<MovieResponse>,
-        category: String,
         isNowPlaying: Boolean = false,
         isPopular: Boolean = false
     ): List<MovieEntity> {
@@ -15,7 +15,7 @@ object DataMapper {
         input.map {
             val movie = MovieEntity(
                 movieId = it.id.toString(),
-                category = category,
+                category = "Movie",
                 title = it.originalTitle,
                 description = it.overview,
                 releaseDate = it.releaseDate,
@@ -30,6 +30,32 @@ object DataMapper {
             movieList.add(movie)
         }
         return movieList
+    }
+
+    fun mapTVShowResponsesToEntities(
+        input: List<TVShowResponse>,
+        isNowPlaying: Boolean = false,
+        isPopular: Boolean = false
+    ): List<MovieEntity> {
+        val tvShowList = ArrayList<MovieEntity>()
+        input.map {
+            val movie = MovieEntity(
+                movieId = it.id.toString(),
+                category = "TVShow",
+                title = it.name,
+                description = it.overview,
+                releaseDate = it.firstAirDate,
+                genre = "",
+                duration = "",
+                rating = it.voteAverage.toString(),
+                image = it.posterPath,
+                isNowPlaying = isNowPlaying,
+                isPopular = isPopular,
+                isFavorite = false,
+            )
+            tvShowList.add(movie)
+        }
+        return tvShowList
     }
 
     fun mapEntitiesToDomain(input: List<MovieEntity>): List<Movie> =

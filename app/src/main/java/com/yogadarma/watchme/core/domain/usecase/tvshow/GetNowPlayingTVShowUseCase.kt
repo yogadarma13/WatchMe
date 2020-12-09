@@ -1,13 +1,10 @@
-package com.yogadarma.watchme.core.domain.repository
+package com.yogadarma.watchme.core.domain.usecase.tvshow
 
 import com.yogadarma.watchme.core.data.Resource
 import com.yogadarma.watchme.core.domain.model.Movie
 import kotlinx.coroutines.flow.Flow
 
-interface IMovieRepository {
-    fun getAllNowPlayingMovie(): Flow<Resource<List<Movie>>>
-
-    fun getAllPopularMovie(): Flow<Resource<List<Movie>>>
+interface GetNowPlayingTVShowUseCase {
 
     fun getAllNowPlayingTVShow(): Flow<Resource<List<Movie>>>
 }
