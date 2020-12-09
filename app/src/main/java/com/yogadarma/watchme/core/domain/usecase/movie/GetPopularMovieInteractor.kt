@@ -5,8 +5,6 @@ import com.yogadarma.watchme.core.domain.model.Movie
 import com.yogadarma.watchme.core.domain.repository.IMovieRepository
 import kotlinx.coroutines.flow.Flow
 
-class GetNowPlayingMovieInteractor(private val repository: IMovieRepository) :
-    GetNowPlayingMovieUseCase {
-    override fun getAllNowPlayingMovie(): Flow<Resource<List<Movie>>> =
-        repository.getAllNowPlayingMovie()
+class GetPopularMovieInteractor(private val repository: IMovieRepository) : GetPopularMovieUseCase {
+    override fun getAllPopularMovie(): Flow<Resource<List<Movie>>> = repository.getAllPopularMovie()
 }

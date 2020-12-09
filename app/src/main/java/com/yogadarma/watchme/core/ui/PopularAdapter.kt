@@ -8,10 +8,10 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.yogadarma.watchme.R
 import com.yogadarma.watchme.core.domain.model.Movie
-import com.yogadarma.watchme.databinding.ItemNowPlayingBinding
+import com.yogadarma.watchme.databinding.ItemPopularBinding
 import java.util.*
 
-class NowPlayingAdapter : RecyclerView.Adapter<NowPlayingAdapter.ViewHolder>() {
+class PopularAdapter : RecyclerView.Adapter<PopularAdapter.ViewHolder>() {
 
     private var listData = ArrayList<Movie>()
     var onItemClick: ((Movie) -> Unit)? = null
@@ -25,7 +25,7 @@ class NowPlayingAdapter : RecyclerView.Adapter<NowPlayingAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder =
         ViewHolder(
-            LayoutInflater.from(parent.context).inflate(R.layout.item_now_playing, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.item_popular, parent, false)
         )
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -36,7 +36,7 @@ class NowPlayingAdapter : RecyclerView.Adapter<NowPlayingAdapter.ViewHolder>() {
     override fun getItemCount(): Int = listData.size
 
     inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val binding = ItemNowPlayingBinding.bind(itemView)
+        private val binding = ItemPopularBinding.bind(itemView)
 
         fun bind(data: Movie) {
             with(binding) {
@@ -44,9 +44,9 @@ class NowPlayingAdapter : RecyclerView.Adapter<NowPlayingAdapter.ViewHolder>() {
                     .load("https://image.tmdb.org/t/p/w220_and_h330_face${data.image}").apply(
                         RequestOptions.placeholderOf(R.drawable.ic_loading)
                             .error(R.drawable.ic_error)
-                    ).centerCrop().into(imgPosterNowPlaying)
-                tvTitleNowPlaying.text = data.title
-                tvReleaseDateNowPlaying.text = data.releaseDate
+                    ).centerCrop().into(imgPosterPopular)
+                tvTitlePopular.text = data.title
+                tvReleaseDatePopular.text = data.releaseDate
             }
         }
 

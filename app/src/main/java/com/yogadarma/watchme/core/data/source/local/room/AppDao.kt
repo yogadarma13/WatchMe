@@ -10,8 +10,11 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface AppDao {
 
-    @Query("SELECT * FROM movie WHERE isNowPlaying = 1")
+    @Query("SELECT * FROM movie WHERE category = 'Movie' AND isNowPlaying = 1")
     fun getAllNowPlayingMovie(): Flow<List<MovieEntity>>
+
+    @Query("SELECT * FROM movie WHERE category = 'Movie' AND isPopular = 1")
+    fun getAllPopularMovie(): Flow<List<MovieEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertMovie(movies: List<MovieEntity>)

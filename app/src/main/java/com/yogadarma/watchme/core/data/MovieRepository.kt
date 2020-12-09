@@ -36,4 +36,25 @@ class MovieRepository(
             }
 
         }.asFlow()
+
+    override fun getAllPopularMovie(): Flow<Resource<List<Movie>>> =
+        object : NetworkBoundResource<List<Movie>, List<MovieResponse>>() {
+            override fun loadFromDB(): Flow<List<Movie>> {
+                return localDataSource.getAllPopularMovie().map {
+                    DataMapper.mapEntitiesToDomain(it)
+                }
+            }
+
+            override fun shouldFetch(data: List<Movie>?): Boolean = true
+
+            override suspend fun createCall(): Flow<ApiResponse<List<MovieResponse>>> =
+                remoteDataSource.getAllPopularMovie()
+
+            override suspend fun saveCallResult(data: List<MovieResponse>) {
+                val movieList =
+                    DataMapper.mapResponsesToEntities(data, category = "Movie", isPopular = true)
+                localDataSource.insertMovie(movieList)
+            }
+
+        }.asFlow()
 }

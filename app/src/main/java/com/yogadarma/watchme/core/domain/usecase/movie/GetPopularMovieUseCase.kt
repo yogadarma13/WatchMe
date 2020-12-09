@@ -4,6 +4,6 @@ import com.yogadarma.watchme.core.data.Resource
 import com.yogadarma.watchme.core.domain.model.Movie
 import kotlinx.coroutines.flow.Flow
 
-interface GetNowPlayingMovieUseCase {
-    fun getAllNowPlayingMovie(): Flow<Resource<List<Movie>>>
+interface GetPopularMovieUseCase {
+    fun getAllPopularMovie(): Flow<Resource<List<Movie>>>
 }
