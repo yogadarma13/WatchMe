@@ -9,7 +9,7 @@ data class Movie(
     val category: String,
     val title: String,
     val genre: String,
-    val description: String,
+    val synopsis: String,
     val releaseDate: String,
     val rating: String,
     val duration: String,

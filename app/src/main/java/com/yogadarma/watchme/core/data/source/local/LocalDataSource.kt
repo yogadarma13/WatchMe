@@ -14,6 +14,10 @@ class LocalDataSource(private val appDao: AppDao) {
 
     fun getAllPopularTVShow(): Flow<List<MovieEntity>> = appDao.getAllPopularTVShow()
 
+    fun getDetail(id: Int): Flow<MovieEntity> = appDao.getDetail(id)
+
     suspend fun insertMovie(movies: List<MovieEntity>) = appDao.insertMovie(movies)
+
+    fun updateMovie(movie: MovieEntity) = appDao.updateMovie(movie)
 
 }

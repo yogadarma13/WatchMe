@@ -12,4 +12,8 @@ interface IMovieRepository {
     fun getAllNowPlayingTVShow(): Flow<Resource<List<Movie>>>
 
     fun getAllPopularTVShow(): Flow<Resource<List<Movie>>>
+
+    fun getDetailMovie(id: Int, isNowPlaying: Boolean, isPopular: Boolean, isFavorite: Boolean): Flow<Resource<Movie>>
+
+    fun getDetailTVShow(id: Int, isNowPlaying: Boolean, isPopular: Boolean, isFavorite: Boolean): Flow<Resource<Movie>>
 }

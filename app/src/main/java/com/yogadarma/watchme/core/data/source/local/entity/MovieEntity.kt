@@ -21,8 +21,8 @@ data class MovieEntity(
     @ColumnInfo(name = "genre")
     var genre: String,
 
-    @ColumnInfo(name = "description")
-    var description: String,
+    @ColumnInfo(name = "synopsis")
+    var synopsis: String,
 
     @ColumnInfo(name = "releaseDate")
     var releaseDate: String,

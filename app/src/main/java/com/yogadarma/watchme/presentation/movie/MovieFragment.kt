@@ -6,9 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.yogadarma.watchme.core.data.Resource
+import com.yogadarma.watchme.core.domain.model.Movie
 import com.yogadarma.watchme.core.ui.NowPlayingAdapter
 import com.yogadarma.watchme.core.ui.PopularAdapter
 import com.yogadarma.watchme.databinding.FragmentMovieBinding
@@ -34,6 +36,14 @@ class MovieFragment : Fragment() {
 
         val nowPlayingAdapter = NowPlayingAdapter()
         val popularAdapter = PopularAdapter()
+
+        nowPlayingAdapter.onItemClick = { movie ->
+            navigateToDetail(movie)
+        }
+
+        popularAdapter.onItemClick = { movie ->
+            navigateToDetail(movie)
+        }
 
         movieViewModel.getNowPlayingMovie().observe(requireActivity(), { response ->
             if (response != null) {
@@ -76,6 +86,11 @@ class MovieFragment : Fragment() {
             setHasFixedSize(true)
             adapter = popularAdapter
         }
+    }
+
+    private fun navigateToDetail(movie: Movie) {
+        val navigate = MovieFragmentDirections.actionMovieFragmentToDetailFragment(movie)
+        findNavController().navigate(navigate)
     }
 
     override fun onDestroyView() {

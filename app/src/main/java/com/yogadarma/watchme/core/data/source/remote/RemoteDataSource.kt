@@ -2,6 +2,8 @@ package com.yogadarma.watchme.core.data.source.remote
 
 import com.yogadarma.watchme.core.data.source.remote.network.ApiResponse
 import com.yogadarma.watchme.core.data.source.remote.network.ApiService
+import com.yogadarma.watchme.core.data.source.remote.response.DetailMovieResponse
+import com.yogadarma.watchme.core.data.source.remote.response.DetailTVShowResponse
 import com.yogadarma.watchme.core.data.source.remote.response.MovieResponse
 import com.yogadarma.watchme.core.data.source.remote.response.TVShowResponse
 import kotlinx.coroutines.Dispatchers
@@ -66,6 +68,36 @@ class RemoteDataSource(private val apiService: ApiService) {
                 val tvShows = response.results
                 if (tvShows.isNotEmpty()) {
                     emit(ApiResponse.Success(tvShows))
+                } else {
+                    emit(ApiResponse.Empty)
+                }
+            } catch (e: Exception) {
+                emit(ApiResponse.Error(e.toString()))
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+
+    suspend fun getDetailMovie(id: Int): Flow<ApiResponse<DetailMovieResponse>> {
+        return flow {
+            try {
+                val response = apiService.getDetailMovie(id)
+                if (response.title.isNotEmpty()) {
+                    emit(ApiResponse.Success(response))
+                } else {
+                    emit(ApiResponse.Empty)
+                }
+            } catch (e: Exception) {
+                emit(ApiResponse.Error(e.toString()))
+            }
+        }.flowOn(Dispatchers.IO)
+    }
+
+    suspend fun getDetailTVShow(id: Int): Flow<ApiResponse<DetailTVShowResponse>> {
+        return flow {
+            try {
+                val response = apiService.getDetailTVShow(id)
+                if (response.originalName.isNotEmpty()) {
+                    emit(ApiResponse.Success(response))
                 } else {
                     emit(ApiResponse.Empty)
                 }

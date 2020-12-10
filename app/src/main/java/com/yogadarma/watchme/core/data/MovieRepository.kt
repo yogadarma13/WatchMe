@@ -3,6 +3,8 @@ package com.yogadarma.watchme.core.data
 import com.yogadarma.watchme.core.data.source.local.LocalDataSource
 import com.yogadarma.watchme.core.data.source.remote.RemoteDataSource
 import com.yogadarma.watchme.core.data.source.remote.network.ApiResponse
+import com.yogadarma.watchme.core.data.source.remote.response.DetailMovieResponse
+import com.yogadarma.watchme.core.data.source.remote.response.DetailTVShowResponse
 import com.yogadarma.watchme.core.data.source.remote.response.MovieResponse
 import com.yogadarma.watchme.core.data.source.remote.response.TVShowResponse
 import com.yogadarma.watchme.core.domain.model.Movie
@@ -95,6 +97,65 @@ class MovieRepository(
             override suspend fun saveCallResult(data: List<TVShowResponse>) {
                 val tvShowList = DataMapper.mapTVShowResponsesToEntities(data, isPopular = true)
                 localDataSource.insertMovie(tvShowList)
+            }
+
+        }.asFlow()
+
+    override fun getDetailMovie(
+        id: Int,
+        isNowPlaying: Boolean,
+        isPopular: Boolean,
+        isFavorite: Boolean
+    ): Flow<Resource<Movie>> =
+        object : NetworkBoundResource<Movie, DetailMovieResponse>() {
+            override fun loadFromDB(): Flow<Movie> {
+                return localDataSource.getDetail(id).map {
+                    DataMapper.mapDetailEntityToDomain(it)
+                }
+            }
+
+            override fun shouldFetch(data: Movie?): Boolean = true
+
+            override suspend fun createCall(): Flow<ApiResponse<DetailMovieResponse>> =
+                remoteDataSource.getDetailMovie(id)
+
+            override suspend fun saveCallResult(data: DetailMovieResponse) {
+                val movie = DataMapper.mapDetailMovieResponsesToEntities(
+                    data,
+                    isNowPlaying,
+                    isPopular,
+                    isFavorite
+                )
+                appExecutors.diskIO().execute { localDataSource.updateMovie(movie) }
+            }
+
+        }.asFlow()
+
+    override fun getDetailTVShow(
+        id: Int, isNowPlaying: Boolean,
+        isPopular: Boolean,
+        isFavorite: Boolean
+    ): Flow<Resource<Movie>> =
+        object : NetworkBoundResource<Movie, DetailTVShowResponse>() {
+            override fun loadFromDB(): Flow<Movie> {
+                return localDataSource.getDetail(id).map {
+                    DataMapper.mapDetailEntityToDomain(it)
+                }
+            }
+
+            override fun shouldFetch(data: Movie?): Boolean = true
+
+            override suspend fun createCall(): Flow<ApiResponse<DetailTVShowResponse>> =
+                remoteDataSource.getDetailTVShow(id)
+
+            override suspend fun saveCallResult(data: DetailTVShowResponse) {
+                val tvShow = DataMapper.mapDetailTVShowResponsesToEntities(
+                    data,
+                    isNowPlaying,
+                    isPopular,
+                    isFavorite
+                )
+                appExecutors.diskIO().execute { localDataSource.updateMovie(tvShow) }
             }
 
         }.asFlow()

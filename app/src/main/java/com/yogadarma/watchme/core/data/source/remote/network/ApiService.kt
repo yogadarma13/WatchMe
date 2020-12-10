@@ -1,8 +1,11 @@
 package com.yogadarma.watchme.core.data.source.remote.network
 
+import com.yogadarma.watchme.core.data.source.remote.response.DetailMovieResponse
+import com.yogadarma.watchme.core.data.source.remote.response.DetailTVShowResponse
 import com.yogadarma.watchme.core.data.source.remote.response.ListMovieResponse
 import com.yogadarma.watchme.core.data.source.remote.response.ListTVShowResponse
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ApiService {
@@ -26,4 +29,16 @@ interface ApiService {
     suspend fun getPopularTVShow(
         @Query("api_key") apiKey: String = Constant.API_KEY
     ): ListTVShowResponse
+
+    @GET("movie/{id}")
+    suspend fun getDetailMovie(
+        @Path("id") id: Int,
+        @Query("api_key") apiKey: String = Constant.API_KEY
+    ): DetailMovieResponse
+
+    @GET("tv/{id}")
+    suspend fun getDetailTVShow(
+        @Path("id") id: Int,
+        @Query("api_key") apiKey: String = Constant.API_KEY
+    ): DetailTVShowResponse
 }

@@ -21,10 +21,27 @@
         android:id="@+id/movieFragment"
         android:name="com.yogadarma.watchme.presentation.movie.MovieFragment"
         android:label="fragment_movie"
-        tools:layout="@layout/fragment_movie" />
+        tools:layout="@layout/fragment_movie" >
+        <action
+            android:id="@+id/action_movieFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
     <fragment
         android:id="@+id/tvShowFragment"
         android:name="com.yogadarma.watchme.presentation.tvshow.TvShowFragment"
         android:label="fragment_tv_show"
-        tools:layout="@layout/fragment_tv_show" />
+        tools:layout="@layout/fragment_tv_show" >
+        <action
+            android:id="@+id/action_tvShowFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.yogadarma.watchme.presentation.detail.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" >
+        <argument
+            android:name="movie"
+            app:argType="com.yogadarma.watchme.core.domain.model.Movie" />
+    </fragment>
 </navigation>
