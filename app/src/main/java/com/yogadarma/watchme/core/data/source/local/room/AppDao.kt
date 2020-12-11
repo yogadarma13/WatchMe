@@ -20,7 +20,10 @@ interface AppDao {
     fun getAllPopularTVShow(): Flow<List<MovieEntity>>
 
     @Query("SELECT * FROM movie WHERE movieId = :id")
-    fun getDetail(id: Int) : Flow<MovieEntity>
+    fun getDetail(id: Int): Flow<MovieEntity>
+
+    @Query("SELECT * FROM movie WHERE isFavorite = 1")
+    fun getAllFavorite(): Flow<List<MovieEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertMovie(movies: List<MovieEntity>)

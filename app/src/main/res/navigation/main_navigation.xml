@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_splashFragment_to_tvShowFragment"
             app:destination="@id/tvShowFragment" />
+        <action
+            android:id="@+id/action_splashFragment_to_favoriteFragment"
+            app:destination="@id/favoriteFragment" />
     </fragment>
     <fragment
         android:id="@+id/movieFragment"
@@ -43,5 +46,14 @@
         <argument
             android:name="movie"
             app:argType="com.yogadarma.watchme.core.domain.model.Movie" />
+    </fragment>
+    <fragment
+        android:id="@+id/favoriteFragment"
+        android:name="com.yogadarma.watchme.presentation.favorite.FavoriteFragment"
+        android:label="fragment_favorite"
+        tools:layout="@layout/fragment_favorite" >
+        <action
+            android:id="@+id/action_favoriteFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
     </fragment>
 </navigation>

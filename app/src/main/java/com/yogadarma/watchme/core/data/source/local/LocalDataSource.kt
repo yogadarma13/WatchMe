@@ -25,4 +25,6 @@ class LocalDataSource(private val appDao: AppDao) {
         appDao.updateMovie(movie)
     }
 
+    fun getAllFavorite(): Flow<List<MovieEntity>> = appDao.getAllFavorite()
+
 }

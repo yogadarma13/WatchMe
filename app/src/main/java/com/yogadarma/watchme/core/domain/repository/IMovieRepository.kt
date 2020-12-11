@@ -28,4 +28,6 @@ interface IMovieRepository {
     ): Flow<Resource<Movie>>
 
     fun setFavoriteMovie(movie: Movie, state: Boolean)
+
+    fun getAllFavorite(): Flow<List<Movie>>
 }
