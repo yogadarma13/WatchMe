@@ -20,4 +20,9 @@ class LocalDataSource(private val appDao: AppDao) {
 
     fun updateMovie(movie: MovieEntity) = appDao.updateMovie(movie)
 
+    fun setFavoriteMovie(movie: MovieEntity, newState: Boolean) {
+        movie.isFavorite = newState
+        appDao.updateMovie(movie)
+    }
+
 }

@@ -7,10 +7,12 @@ import com.yogadarma.watchme.core.data.Resource
 import com.yogadarma.watchme.core.domain.model.Movie
 import com.yogadarma.watchme.core.domain.usecase.detail.GetDetailMovieUseCase
 import com.yogadarma.watchme.core.domain.usecase.detail.GetDetailTVShowUseCase
+import com.yogadarma.watchme.core.domain.usecase.detail.SetFavoriteUseCase
 
 class DetailViewModel(
     private val getDetailMovieUseCase: GetDetailMovieUseCase,
-    private val getDetailTVShowUseCase: GetDetailTVShowUseCase
+    private val getDetailTVShowUseCase: GetDetailTVShowUseCase,
+    private var setFavoriteUseCase: SetFavoriteUseCase
 ) : ViewModel() {
 
     fun getDetail(
@@ -35,4 +37,6 @@ class DetailViewModel(
                 isFavorite
             ).asLiveData()
 
+    fun setFavoriteMovie(movie: Movie, state: Boolean) =
+        setFavoriteUseCase.setFavoriteMovie(movie, state)
 }

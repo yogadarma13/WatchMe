@@ -1,9 +1,6 @@
 package com.yogadarma.watchme.di
 
-import com.yogadarma.watchme.core.domain.usecase.detail.GetDetailMovieInteractor
-import com.yogadarma.watchme.core.domain.usecase.detail.GetDetailMovieUseCase
-import com.yogadarma.watchme.core.domain.usecase.detail.GetDetailTVShowInteractor
-import com.yogadarma.watchme.core.domain.usecase.detail.GetDetailTVShowUseCase
+import com.yogadarma.watchme.core.domain.usecase.detail.*
 import com.yogadarma.watchme.core.domain.usecase.movie.GetNowPlayingMovieInteractor
 import com.yogadarma.watchme.core.domain.usecase.movie.GetNowPlayingMovieUseCase
 import com.yogadarma.watchme.core.domain.usecase.movie.GetPopularMovieInteractor
@@ -25,10 +22,11 @@ val useCaseModule = module {
     factory<GetPopularTVShowUseCase> { GetPopularTVShowInteractor(get()) }
     factory<GetDetailMovieUseCase> { GetDetailMovieInteractor(get()) }
     factory<GetDetailTVShowUseCase> { GetDetailTVShowInteractor(get()) }
+    factory<SetFavoriteUseCase> { SetFavoriteInteractor(get()) }
 }
 
 val viewModelModule = module {
     viewModel { MovieViewModel(get(), get()) }
     viewModel { TvShowViewModel(get(), get()) }
-    viewModel { DetailViewModel(get(), get()) }
+    viewModel { DetailViewModel(get(), get(), get()) }
 }

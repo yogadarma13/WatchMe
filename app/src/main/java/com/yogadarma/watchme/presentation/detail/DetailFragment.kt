@@ -1,11 +1,12 @@
 package com.yogadarma.watchme.presentation.detail
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.core.content.ContextCompat
+import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.yogadarma.watchme.R
@@ -71,8 +72,34 @@ class DetailFragment : Fragment() {
             tvDetailDate.text = movie.releaseDate
             tvDetailDuration.text = "${movie.duration} minutes"
             tvDetailSynopsis.text = movie.synopsis
+
+            var favoriteStatus = movie.isFavorite
+            setFavoriteStatus(favoriteStatus)
+            btnFavorite.setOnClickListener {
+                favoriteStatus = !favoriteStatus
+                detailViewModel.setFavoriteMovie(movie, favoriteStatus)
+                setFavoriteStatus(favoriteStatus)
+            }
         }
 
+    }
+
+    private fun setFavoriteStatus(favoriteStatus: Boolean) {
+        if (favoriteStatus) {
+            binding.btnFavorite.setImageDrawable(
+                ContextCompat.getDrawable(
+                    binding.root.context,
+                    R.drawable.ic_favorite
+                )
+            )
+        } else {
+            binding.btnFavorite.setImageDrawable(
+                ContextCompat.getDrawable(
+                    binding.root.context,
+                    R.drawable.ic_favorite_border
+                )
+            )
+        }
     }
 
     private fun showProgressbar() {
