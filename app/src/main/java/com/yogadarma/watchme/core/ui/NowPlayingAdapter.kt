@@ -8,6 +8,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.yogadarma.watchme.R
 import com.yogadarma.watchme.core.domain.model.Movie
+import com.yogadarma.watchme.core.utils.DateFormat
 import com.yogadarma.watchme.databinding.ItemNowPlayingBinding
 import java.util.*
 
@@ -46,7 +47,7 @@ class NowPlayingAdapter : RecyclerView.Adapter<NowPlayingAdapter.ViewHolder>() {
                             .error(R.drawable.ic_error)
                     ).centerCrop().into(imgPosterNowPlaying)
                 tvTitleNowPlaying.text = data.title
-                tvReleaseDateNowPlaying.text = data.releaseDate
+                tvReleaseDateNowPlaying.text = DateFormat.format(data.releaseDate)
             }
         }
 

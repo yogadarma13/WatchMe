@@ -14,6 +14,7 @@ import com.bumptech.glide.request.RequestOptions
 import com.yogadarma.watchme.R
 import com.yogadarma.watchme.core.data.Resource
 import com.yogadarma.watchme.core.domain.model.Movie
+import com.yogadarma.watchme.core.utils.DateFormat
 import com.yogadarma.watchme.databinding.FragmentDetailBinding
 import org.koin.android.viewmodel.ext.android.viewModel
 
@@ -84,7 +85,7 @@ class DetailFragment : Fragment() {
         binding.tvDetailTitle.text = movie.title
         binding.tvDetailGenre.text = movie.genre
         binding.tvDetailRating.text = movie.rating
-        binding.tvDetailDate.text = movie.releaseDate
+        binding.tvDetailDate.text = DateFormat.format(movie.releaseDate)
         binding.tvDetailDuration.text = "${movie.duration} minutes"
         binding.tvDetailSynopsis.text = movie.synopsis
 

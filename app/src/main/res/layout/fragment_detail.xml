@@ -22,7 +22,8 @@
                 android:layout_height="0dp"
                 app:layout_constraintDimensionRatio="3:4"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:src="@drawable/ic_loading" />
+                tools:src="@drawable/ic_loading"
+                android:contentDescription="@string/movie_poster_content_description" />
 
             <View
                 android:id="@+id/view"
@@ -58,7 +59,8 @@
                 android:src="@drawable/ic_rating"
                 app:layout_constraintBottom_toBottomOf="@id/tv_detail_rating"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@id/tv_detail_rating" />
+                app:layout_constraintTop_toTopOf="@id/tv_detail_rating"
+                android:contentDescription="@string/rating_icon_content_description" />
 
             <TextView
                 android:id="@+id/tv_detail_rating"
@@ -79,7 +81,8 @@
                 android:layout_marginTop="8dp"
                 android:src="@drawable/ic_release_date"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tv_detail_rating" />
+                app:layout_constraintTop_toBottomOf="@id/tv_detail_rating"
+                android:contentDescription="@string/release_date_icon_content_description" />
 
             <TextView
                 android:id="@+id/tv_detail_date"
@@ -101,7 +104,8 @@
                 android:layout_marginTop="8dp"
                 android:src="@drawable/ic_duration"
                 app:layout_constraintStart_toEndOf="@id/tv_detail_date"
-                app:layout_constraintTop_toBottomOf="@id/tv_detail_rating" />
+                app:layout_constraintTop_toBottomOf="@id/tv_detail_rating"
+                android:contentDescription="@string/duration_icon_content_description" />
 
             <TextView
                 android:id="@+id/tv_detail_duration"
@@ -148,7 +152,8 @@
         android:background="?circleBackground"
         android:src="@drawable/ic_arrow_back"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/back_button_content_description" />
 
     <ImageButton
         android:id="@+id/btn_share"
@@ -158,7 +163,8 @@
         android:background="?circleBackground"
         android:src="@drawable/ic_share"
         app:layout_constraintEnd_toStartOf="@id/btn_favorite"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/share_button_content_description" />
 
     <ImageButton
         android:id="@+id/btn_favorite"
@@ -168,7 +174,8 @@
         android:background="?circleBackground"
         android:src="@drawable/ic_favorite_border"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@string/favorite_button_content_description" />
 
     <ProgressBar
         android:id="@+id/progress_bar"

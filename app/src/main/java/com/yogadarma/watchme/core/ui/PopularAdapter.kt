@@ -8,6 +8,7 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.yogadarma.watchme.R
 import com.yogadarma.watchme.core.domain.model.Movie
+import com.yogadarma.watchme.core.utils.DateFormat
 import com.yogadarma.watchme.databinding.ItemPopularBinding
 import java.util.*
 
@@ -46,7 +47,7 @@ class PopularAdapter : RecyclerView.Adapter<PopularAdapter.ViewHolder>() {
                             .error(R.drawable.ic_error)
                     ).centerCrop().into(imgPosterPopular)
                 tvTitlePopular.text = data.title
-                tvReleaseDatePopular.text = data.releaseDate
+                tvReleaseDatePopular.text = DateFormat.format(data.releaseDate)
             }
         }
 

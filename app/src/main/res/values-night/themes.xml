@@ -15,6 +15,7 @@
         <item name="imageShadow">@drawable/shadow_black</item>
         <item name="background">@color/black</item>
         <item name="circleBackground">@drawable/circle_black</item>
+        <item name="splashLogo">@drawable/app_logo</item>
         <item name="tabIndicatorColor">@color/red</item>
     </style>
 </resources>
