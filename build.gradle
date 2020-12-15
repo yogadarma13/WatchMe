@@ -17,7 +17,7 @@ buildscript {
     ext.koin_version = "2.1.6"
     ext.nav_version = "2.3.2"
     ext.multidex_version = "2.0.1"
-
+    ext.legacy_support_version = "1.0.0"
     repositories {
         google()
         jcenter()

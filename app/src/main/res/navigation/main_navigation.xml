@@ -38,15 +38,16 @@
             app:destination="@id/detailFragment"
             app:popUpToInclusive="false" />
     </fragment>
+
     <fragment
         android:id="@+id/favoriteFragment"
-        android:name="com.yogadarma.watchme.presentation.favorite.FavoriteFragment"
+        android:name="com.yogadarma.favorite.FavoriteFragment"
         android:label="@string/favorite_title"
+        app:moduleName="Watch_Me.favorite"
         tools:layout="@layout/fragment_favorite">
         <action
             android:id="@+id/action_favoriteFragment_to_detailFragment"
-            app:destination="@id/detailFragment"
-            app:popUpToInclusive="false" />
+            app:destination="@id/detailFragment" />
     </fragment>
 
     <fragment
@@ -56,6 +57,7 @@
         tools:layout="@layout/fragment_detail">
         <argument
             android:name="movie"
-            app:argType="com.yogadarma.watchme.core.domain.model.Movie" />
+            app:argType="com.yogadarma.core.domain.model.Movie" />
     </fragment>
+
 </navigation>

@@ -1,9 +1,9 @@
 package com.yogadarma.watchme
 
 import android.app.Application
-import com.yogadarma.watchme.core.di.databaseModule
-import com.yogadarma.watchme.core.di.networkModule
-import com.yogadarma.watchme.core.di.repositoryModule
+import com.yogadarma.core.di.databaseModule
+import com.yogadarma.core.di.networkModule
+import com.yogadarma.core.di.repositoryModule
 import com.yogadarma.watchme.di.useCaseModule
 import com.yogadarma.watchme.di.viewModelModule
 import org.koin.android.ext.koin.androidContext
@@ -23,7 +23,7 @@ class MyApplication : Application() {
                     networkModule,
                     repositoryModule,
                     useCaseModule,
-                    viewModelModule
+                    viewModelModule,
                 )
             )
         }

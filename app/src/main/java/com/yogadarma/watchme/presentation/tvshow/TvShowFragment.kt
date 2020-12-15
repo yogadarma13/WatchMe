@@ -9,10 +9,10 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.yogadarma.watchme.core.data.Resource
-import com.yogadarma.watchme.core.domain.model.Movie
-import com.yogadarma.watchme.core.ui.NowPlayingAdapter
-import com.yogadarma.watchme.core.ui.PopularAdapter
+import com.yogadarma.core.data.Resource
+import com.yogadarma.core.domain.model.Movie
+import com.yogadarma.watchme.adapter.NowPlayingAdapter
+import com.yogadarma.watchme.adapter.PopularAdapter
 import com.yogadarma.watchme.databinding.FragmentTvShowBinding
 import org.koin.android.viewmodel.ext.android.viewModel
 

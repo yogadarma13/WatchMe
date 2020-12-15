@@ -17,4 +17,5 @@
     <string name="back_button_content_description">Back button</string>
     <string name="share_button_content_description">Share button</string>
     <string name="favorite_button_content_description">Favorite button</string>
+    <string name="title_favorite">Favorite</string>
 </resources>

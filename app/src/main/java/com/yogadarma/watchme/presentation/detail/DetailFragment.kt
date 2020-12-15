@@ -11,10 +11,10 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.yogadarma.core.data.Resource
+import com.yogadarma.core.domain.model.Movie
+import com.yogadarma.core.utils.DateFormat
 import com.yogadarma.watchme.R
-import com.yogadarma.watchme.core.data.Resource
-import com.yogadarma.watchme.core.domain.model.Movie
-import com.yogadarma.watchme.core.utils.DateFormat
 import com.yogadarma.watchme.databinding.FragmentDetailBinding
 import org.koin.android.viewmodel.ext.android.viewModel
 

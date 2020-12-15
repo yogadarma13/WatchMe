@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
         android:background="?colorPrimary"
-        android:theme="@style/Theme.WatchMe.Toolbar"/>
+        android:theme="@style/Theme.WatchMe.Toolbar" />
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_host_fragment"
@@ -30,6 +30,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
+        android:background="?background"
         app:menu="@menu/bottom_nav_menu" />
 
 </LinearLayout>
