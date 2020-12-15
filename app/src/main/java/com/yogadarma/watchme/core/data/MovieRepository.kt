@@ -27,7 +27,7 @@ class MovieRepository(
                 }
             }
 
-            override fun shouldFetch(data: List<Movie>?): Boolean = true
+            override fun shouldFetch(data: List<Movie>?): Boolean = data?.size == 0
 
             override suspend fun createCall(): Flow<ApiResponse<List<MovieResponse>>> =
                 remoteDataSource.getAllNowPlayingMovie()
@@ -48,7 +48,7 @@ class MovieRepository(
                 }
             }
 
-            override fun shouldFetch(data: List<Movie>?): Boolean = true
+            override fun shouldFetch(data: List<Movie>?): Boolean = data?.size == 0
 
             override suspend fun createCall(): Flow<ApiResponse<List<MovieResponse>>> =
                 remoteDataSource.getAllPopularMovie()
@@ -69,7 +69,7 @@ class MovieRepository(
                 }
             }
 
-            override fun shouldFetch(data: List<Movie>?): Boolean = true
+            override fun shouldFetch(data: List<Movie>?): Boolean = data?.size == 0
 
             override suspend fun createCall(): Flow<ApiResponse<List<TVShowResponse>>> =
                 remoteDataSource.getAllNowPlayingTVShow()
@@ -89,7 +89,7 @@ class MovieRepository(
                 }
             }
 
-            override fun shouldFetch(data: List<Movie>?): Boolean = true
+            override fun shouldFetch(data: List<Movie>?): Boolean = data?.size == 0
 
             override suspend fun createCall(): Flow<ApiResponse<List<TVShowResponse>>> =
                 remoteDataSource.getAllPopularTVShow()

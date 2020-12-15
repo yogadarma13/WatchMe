@@ -5,44 +5,21 @@ import com.google.gson.annotations.SerializedName
 data class MovieResponse(
 
     @field:SerializedName("overview")
-    val overview: String,
-
-    @field:SerializedName("original_language")
-    val originalLanguage: String,
+    val overview: String? = null,
 
     @field:SerializedName("original_title")
-    val originalTitle: String,
-
-    @field:SerializedName("video")
-    val video: Boolean,
-
-    @field:SerializedName("title")
-    val title: String,
-
-    @field:SerializedName("genre_ids")
-    val genreIds: List<Int>,
+    val originalTitle: String? = null,
 
     @field:SerializedName("poster_path")
-    val posterPath: String,
-
-    @field:SerializedName("backdrop_path")
-    val backdropPath: String,
+    val posterPath: String? = null,
 
     @field:SerializedName("release_date")
-    val releaseDate: String,
-
-    @field:SerializedName("popularity")
-    val popularity: Double,
+    val releaseDate: String? = null,
 
     @field:SerializedName("vote_average")
-    val voteAverage: Double,
+    val voteAverage: Double? = null,
 
     @field:SerializedName("id")
-    val id: Int,
+    val id: Int? = null
 
-    @field:SerializedName("adult")
-    val adult: Boolean,
-
-    @field:SerializedName("vote_count")
-    val voteCount: Int
 )

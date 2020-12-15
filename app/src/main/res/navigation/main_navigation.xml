@@ -9,51 +9,53 @@
         android:id="@+id/splashFragment"
         android:name="com.yogadarma.watchme.presentation.splash.SplashFragment"
         android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash" >
+        tools:layout="@layout/fragment_splash">
         <action
             android:id="@+id/action_splashFragment_to_movieFragment"
-            app:destination="@id/movieFragment" />
-        <action
-            android:id="@+id/action_splashFragment_to_tvShowFragment"
-            app:destination="@id/tvShowFragment" />
-        <action
-            android:id="@+id/action_splashFragment_to_favoriteFragment"
-            app:destination="@id/favoriteFragment" />
+            app:destination="@id/movieFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
     </fragment>
+
     <fragment
         android:id="@+id/movieFragment"
         android:name="com.yogadarma.watchme.presentation.movie.MovieFragment"
-        android:label="fragment_movie"
-        tools:layout="@layout/fragment_movie" >
+        android:label="@string/movie_title"
+        tools:layout="@layout/fragment_movie">
         <action
             android:id="@+id/action_movieFragment_to_detailFragment"
-            app:destination="@id/detailFragment" />
+            app:destination="@id/detailFragment"
+            app:popUpToInclusive="false" />
     </fragment>
+
     <fragment
         android:id="@+id/tvShowFragment"
         android:name="com.yogadarma.watchme.presentation.tvshow.TvShowFragment"
-        android:label="fragment_tv_show"
-        tools:layout="@layout/fragment_tv_show" >
+        android:label="@string/tv_show_title"
+        tools:layout="@layout/fragment_tv_show">
         <action
             android:id="@+id/action_tvShowFragment_to_detailFragment"
-            app:destination="@id/detailFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/detailFragment"
-        android:name="com.yogadarma.watchme.presentation.detail.DetailFragment"
-        android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" >
-        <argument
-            android:name="movie"
-            app:argType="com.yogadarma.watchme.core.domain.model.Movie" />
+            app:destination="@id/detailFragment"
+            app:popUpToInclusive="false" />
     </fragment>
     <fragment
         android:id="@+id/favoriteFragment"
         android:name="com.yogadarma.watchme.presentation.favorite.FavoriteFragment"
-        android:label="fragment_favorite"
-        tools:layout="@layout/fragment_favorite" >
+        android:label="@string/favorite_title"
+        tools:layout="@layout/fragment_favorite">
         <action
             android:id="@+id/action_favoriteFragment_to_detailFragment"
-            app:destination="@id/detailFragment" />
+            app:destination="@id/detailFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.yogadarma.watchme.presentation.detail.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail">
+        <argument
+            android:name="movie"
+            app:argType="com.yogadarma.watchme.core.domain.model.Movie" />
     </fragment>
 </navigation>

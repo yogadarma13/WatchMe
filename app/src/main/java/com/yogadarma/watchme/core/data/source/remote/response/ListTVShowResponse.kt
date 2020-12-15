@@ -5,14 +5,15 @@ import com.google.gson.annotations.SerializedName
 data class ListTVShowResponse(
 
 	@field:SerializedName("page")
-	val page: Int,
+	val page: Int? = null,
 
 	@field:SerializedName("total_pages")
-	val totalPages: Int,
+	val totalPages: Int? = null,
 
 	@field:SerializedName("results")
-	val results: List<TVShowResponse>,
+	val results: List<TVShowResponse>? = null,
 
 	@field:SerializedName("total_results")
-	val totalResults: Int
+	val totalResults: Int? = null
 )
+

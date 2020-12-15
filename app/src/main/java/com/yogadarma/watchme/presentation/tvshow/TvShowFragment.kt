@@ -45,30 +45,32 @@ class TvShowFragment : Fragment() {
             navigateToDetail(movie)
         }
 
-        tvShowViewModel.getAllNowPlayingTVShow().observe(requireActivity(), { response ->
+        tvShowViewModel.getAllNowPlayingTVShow().observe(viewLifecycleOwner, { response ->
             if (response != null) {
                 when (response) {
-                    is Resource.Loading -> {
-                    }
+                    is Resource.Loading -> showProgressbar()
                     is Resource.Success -> {
+                        dismissProgressbar()
                         nowPlayingAdapter.setData(response.data)
                     }
                     is Resource.Error -> {
+                        dismissProgressbar()
                         Toast.makeText(context, response.message, Toast.LENGTH_SHORT).show()
                     }
                 }
             }
         })
 
-        tvShowViewModel.getAllPopularTVShow().observe(requireActivity(), { response ->
+        tvShowViewModel.getAllPopularTVShow().observe(viewLifecycleOwner, { response ->
             if (response != null) {
                 when (response) {
-                    is Resource.Loading -> {
-                    }
+                    is Resource.Loading -> showProgressbar()
                     is Resource.Success -> {
+                        dismissProgressbar()
                         popularAdapter.setData(response.data)
                     }
                     is Resource.Error -> {
+                        dismissProgressbar()
                         Toast.makeText(context, response.message, Toast.LENGTH_SHORT).show()
                     }
                 }
@@ -88,14 +90,19 @@ class TvShowFragment : Fragment() {
         }
     }
 
+    private fun showProgressbar() {
+        binding.progressbar.visibility = View.VISIBLE
+        binding.tvShowContainer.visibility = View.GONE
+    }
+
+    private fun dismissProgressbar() {
+        binding.progressbar.visibility = View.GONE
+        binding.tvShowContainer.visibility = View.VISIBLE
+    }
+
     private fun navigateToDetail(movie: Movie) {
         val navigate = TvShowFragmentDirections.actionTvShowFragmentToDetailFragment(movie)
         findNavController().navigate(navigate)
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
 }

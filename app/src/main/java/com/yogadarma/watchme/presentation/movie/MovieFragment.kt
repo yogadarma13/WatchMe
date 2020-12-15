@@ -45,30 +45,36 @@ class MovieFragment : Fragment() {
             navigateToDetail(movie)
         }
 
-        movieViewModel.getNowPlayingMovie().observe(requireActivity(), { response ->
+        movieViewModel.getNowPlayingMovie().observe(viewLifecycleOwner, { response ->
             if (response != null) {
                 when (response) {
                     is Resource.Loading -> {
+                        showProgressbar()
                     }
                     is Resource.Success -> {
+                        dismissProgressbar()
                         nowPlayingAdapter.setData(response.data)
                     }
                     is Resource.Error -> {
+                        dismissProgressbar()
                         Toast.makeText(context, response.message, Toast.LENGTH_SHORT).show()
                     }
                 }
             }
         })
 
-        movieViewModel.getPopularMovie().observe(requireActivity(), { response ->
+        movieViewModel.getPopularMovie().observe(viewLifecycleOwner, { response ->
             if (response != null) {
                 when (response) {
                     is Resource.Loading -> {
+                        showProgressbar()
                     }
                     is Resource.Success -> {
+                        dismissProgressbar()
                         popularAdapter.setData(response.data)
                     }
                     is Resource.Error -> {
+                        dismissProgressbar()
                         Toast.makeText(context, response.message, Toast.LENGTH_SHORT).show()
                     }
                 }
@@ -88,14 +94,19 @@ class MovieFragment : Fragment() {
         }
     }
 
+    private fun showProgressbar() {
+        binding.progressbar.visibility = View.VISIBLE
+        binding.movieContainer.visibility = View.GONE
+    }
+
+    private fun dismissProgressbar() {
+        binding.progressbar.visibility = View.GONE
+        binding.movieContainer.visibility = View.VISIBLE
+    }
+
     private fun navigateToDetail(movie: Movie) {
         val navigate = MovieFragmentDirections.actionMovieFragmentToDetailFragment(movie)
         findNavController().navigate(navigate)
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 
 }

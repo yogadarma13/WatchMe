@@ -17,7 +17,7 @@ class RemoteDataSource(private val apiService: ApiService) {
         return flow {
             try {
                 val response = apiService.getNowPlayingMovie()
-                val movies = response.results
+                val movies = response.results!!
                 if (movies.isNotEmpty()) {
                     emit(ApiResponse.Success(movies))
                 } else {
@@ -33,7 +33,7 @@ class RemoteDataSource(private val apiService: ApiService) {
         return flow {
             try {
                 val response = apiService.getPopularMovie()
-                val movies = response.results
+                val movies = response.results!!
                 if (movies.isNotEmpty()) {
                     emit(ApiResponse.Success(movies))
                 } else {
@@ -49,7 +49,7 @@ class RemoteDataSource(private val apiService: ApiService) {
         return flow {
             try {
                 val response = apiService.getNowPlayingTVShow()
-                val tvShows = response.results
+                val tvShows = response.results!!
                 if (tvShows.isNotEmpty()) {
                     emit(ApiResponse.Success(tvShows))
                 } else {
@@ -65,7 +65,7 @@ class RemoteDataSource(private val apiService: ApiService) {
         return flow {
             try {
                 val response = apiService.getPopularTVShow()
-                val tvShows = response.results
+                val tvShows = response.results!!
                 if (tvShows.isNotEmpty()) {
                     emit(ApiResponse.Success(tvShows))
                 } else {
@@ -81,7 +81,7 @@ class RemoteDataSource(private val apiService: ApiService) {
         return flow {
             try {
                 val response = apiService.getDetailMovie(id)
-                if (response.title.isNotEmpty()) {
+                if (response.originalTitle!!.isNotEmpty()) {
                     emit(ApiResponse.Success(response))
                 } else {
                     emit(ApiResponse.Empty)
@@ -96,7 +96,7 @@ class RemoteDataSource(private val apiService: ApiService) {
         return flow {
             try {
                 val response = apiService.getDetailTVShow(id)
-                if (response.originalName.isNotEmpty()) {
+                if (response.originalName!!.isNotEmpty()) {
                     emit(ApiResponse.Success(response))
                 } else {
                     emit(ApiResponse.Empty)
