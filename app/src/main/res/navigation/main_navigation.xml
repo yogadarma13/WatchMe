@@ -60,4 +60,10 @@
             app:argType="com.yogadarma.core.domain.model.Movie" />
     </fragment>
 
+    <fragment
+        android:id="@+id/settingFragment"
+        android:name="com.yogadarma.watchme.presentation.setting.SettingFragment"
+        android:label="@string/setting_title"
+        tools:layout="@layout/fragment_setting" />
+
 </navigation>

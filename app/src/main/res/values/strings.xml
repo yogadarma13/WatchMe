@@ -1,13 +1,12 @@
 <resources>
     <string name="app_name">Watch Me</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="now_playing_text">Now Playing</string>
     <string name="popular_text">Popular</string>
     <string name="synopsis">Synopsis</string>
     <string name="movie_title">Movie</string>
     <string name="tv_show_title">TV Show</string>
     <string name="favorite_title">Favorite</string>
-    <string name="share_title">Send Movie</string>
+    <string name="share_title">Share Movie</string>
     <string name="share_text">Come see the details of the movie %s in the Watch Me Application</string>
     <string name="logo_app_content_description">Watch Me logo app</string>
     <string name="movie_poster_content_description">Movie\'s Poster</string>
@@ -17,5 +16,7 @@
     <string name="back_button_content_description">Back button</string>
     <string name="share_button_content_description">Share button</string>
     <string name="favorite_button_content_description">Favorite button</string>
-    <string name="title_favorite">Favorite</string>
+    <string name="setting_title">Settings</string>
+    <string name="language_setting">Language</string>
+    <string name="selected_language">English</string>
 </resources>

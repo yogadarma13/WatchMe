@@ -1,12 +1,13 @@
 package com.yogadarma.watchme.presentation
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
-import androidx.navigation.ui.setupWithNavController
+import androidx.navigation.ui.*
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.yogadarma.watchme.R
 import com.yogadarma.watchme.databinding.ActivityMainBinding
@@ -14,6 +15,10 @@ import com.yogadarma.watchme.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var navController: NavController
+    private lateinit var navView: BottomNavigationView
+    private lateinit var appBarConfiguration: AppBarConfiguration
+    private lateinit var settingItem: MenuItem
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,20 +30,25 @@ class MainActivity : AppCompatActivity() {
 
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
-        val navController = navHostFragment.navController
-        val navView: BottomNavigationView = binding.navView
+        navController = navHostFragment.navController
+        navView = binding.navView
 
         navController.addOnDestinationChangedListener { _, destination, _ ->
             if (destination.id == R.id.movieFragment || destination.id == R.id.tvShowFragment || destination.id == R.id.favoriteFragment) {
                 binding.toolbar.visibility = View.VISIBLE
                 navView.visibility = View.VISIBLE
+                settingItem.isVisible = true
+            } else if (destination.id == R.id.settingFragment){
+                binding.toolbar.visibility = View.VISIBLE
+                navView.visibility = View.GONE
+                settingItem.isVisible = false
             } else {
                 binding.toolbar.visibility = View.GONE
                 navView.visibility = View.GONE
             }
         }
 
-        val appBarConfiguration = AppBarConfiguration(
+        appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.movieFragment, R.id.tvShowFragment, R.id.favoriteFragment
             )
@@ -46,6 +56,20 @@ class MainActivity : AppCompatActivity() {
 
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        settingItem = menu!!.findItem(R.id.settingFragment)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return item.onNavDestinationSelected(navController) || super.onOptionsItemSelected(item)
     }
 
 }

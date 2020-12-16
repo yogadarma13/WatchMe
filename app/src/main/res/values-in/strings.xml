@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Watch Me</string>
+    <string name="now_playing_text">Sedang Diputar </string>
+    <string name="popular_text">Populer</string>
+    <string name="synopsis">Sinopsis</string>
+    <string name="movie_title">Film</string>
+    <string name="tv_show_title">Serial TV</string>
+    <string name="favorite_title">Favorit</string>
+    <string name="share_title">Bagikan Film</string>
+    <string name="share_text">Ayo lihat detail dari film %s pada aplikasi Watch Me</string>
+    <string name="logo_app_content_description">Logo aplikasi Watch Me</string>
+    <string name="movie_poster_content_description">Gambar dari film</string>
+    <string name="release_date_icon_content_description">Simbol dari tanggal perilisan</string>
+    <string name="rating_icon_content_description">Simbol dari rating film</string>
+    <string name="duration_icon_content_description">Simbol dari durasi film</string>
+    <string name="back_button_content_description">Tombol kembali</string>
+    <string name="share_button_content_description">Tombol berbagi</string>
+    <string name="favorite_button_content_description">Tombol Favorit</string>
+    <string name="setting_title">Pengaturan</string>
+    <string name="language_setting">Bahasa</string>
+    <string name="selected_language">Indonesia</string>
+</resources>

@@ -38,8 +38,8 @@ android {
 
 dependencies {
     implementation project(":core")
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     implementation project(":app")
+    implementation "androidx.legacy:legacy-support-v4:$legacy_support_version"
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    androidTestImplementation 'androidx.annotation:annotation:1.1.0'
+    androidTestImplementation "androidx.annotation:annotation:$annotation_version"
 }
