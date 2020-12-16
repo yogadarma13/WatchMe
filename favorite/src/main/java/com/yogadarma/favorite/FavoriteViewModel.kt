@@ -6,6 +6,6 @@ import androidx.lifecycle.asLiveData
 import com.yogadarma.core.domain.model.Movie
 import com.yogadarma.core.domain.usecase.favorite.GetFavoriteUseCase
 
-class FavoriteViewModel(private val getFavoriteUseCase: GetFavoriteUseCase): ViewModel() {
+class FavoriteViewModel(private val getFavoriteUseCase: GetFavoriteUseCase) : ViewModel() {
     fun getAllFavorite(): LiveData<List<Movie>> = getFavoriteUseCase.getAllFavorite().asLiveData()
 }

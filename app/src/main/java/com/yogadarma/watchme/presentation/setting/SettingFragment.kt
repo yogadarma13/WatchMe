@@ -1,10 +1,8 @@
 package com.yogadarma.watchme.presentation.setting
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
 import com.yogadarma.watchme.R
 import com.yogadarma.watchme.databinding.FragmentSettingBinding
 
@@ -18,7 +16,7 @@ class SettingFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         _binding = FragmentSettingBinding.inflate(inflater, container, false)
-
+        setHasOptionsMenu(true)
         return binding.root
     }
 
@@ -27,6 +25,11 @@ class SettingFragment : Fragment() {
 
         childFragmentManager.beginTransaction()
             .add(R.id.setting_holder, SettingPreferenceFragment()).commit()
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        menu.clear()
     }
 
 }

@@ -48,13 +48,15 @@ class TvShowFragment : Fragment() {
         tvShowViewModel.getAllNowPlayingTVShow().observe(viewLifecycleOwner, { response ->
             if (response != null) {
                 when (response) {
-                    is Resource.Loading -> showProgressbar()
+                    is Resource.Loading -> {
+                        loadingVisibility()
+                    }
                     is Resource.Success -> {
-                        dismissProgressbar()
+                        successVisibility()
                         nowPlayingAdapter.setData(response.data)
                     }
                     is Resource.Error -> {
-                        dismissProgressbar()
+                        errorVisibility()
                         Toast.makeText(context, response.message, Toast.LENGTH_SHORT).show()
                     }
                 }
@@ -64,13 +66,15 @@ class TvShowFragment : Fragment() {
         tvShowViewModel.getAllPopularTVShow().observe(viewLifecycleOwner, { response ->
             if (response != null) {
                 when (response) {
-                    is Resource.Loading -> showProgressbar()
+                    is Resource.Loading -> {
+                        loadingVisibility()
+                    }
                     is Resource.Success -> {
-                        dismissProgressbar()
+                        successVisibility()
                         popularAdapter.setData(response.data)
                     }
                     is Resource.Error -> {
-                        dismissProgressbar()
+                        errorVisibility()
                         Toast.makeText(context, response.message, Toast.LENGTH_SHORT).show()
                     }
                 }
@@ -90,14 +94,22 @@ class TvShowFragment : Fragment() {
         }
     }
 
-    private fun showProgressbar() {
+    private fun loadingVisibility() {
         binding.progressbar.visibility = View.VISIBLE
         binding.tvShowContainer.visibility = View.GONE
+        binding.viewError.root.visibility = View.GONE
     }
 
-    private fun dismissProgressbar() {
+    private fun successVisibility() {
         binding.progressbar.visibility = View.GONE
         binding.tvShowContainer.visibility = View.VISIBLE
+        binding.viewError.root.visibility = View.GONE
+    }
+
+    private fun errorVisibility() {
+        binding.progressbar.visibility = View.GONE
+        binding.tvShowContainer.visibility = View.GONE
+        binding.viewError.root.visibility = View.VISIBLE
     }
 
     private fun navigateToDetail(movie: Movie) {

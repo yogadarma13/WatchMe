@@ -23,7 +23,7 @@
                 android:contentDescription="@string/movie_poster_content_description"
                 app:layout_constraintDimensionRatio="3:4"
                 app:layout_constraintTop_toTopOf="parent"
-                tools:src="@drawable/ic_loading" />
+                tools:src="@drawable/ic_loading_image" />
 
             <View
                 android:id="@+id/view"

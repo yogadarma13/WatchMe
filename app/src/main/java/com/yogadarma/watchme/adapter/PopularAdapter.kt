@@ -43,8 +43,8 @@ class PopularAdapter : RecyclerView.Adapter<PopularAdapter.ViewHolder>() {
             with(binding) {
                 Glide.with(binding.root)
                     .load("https://image.tmdb.org/t/p/w220_and_h330_face${data.image}").apply(
-                        RequestOptions.placeholderOf(R.drawable.ic_loading)
-                            .error(R.drawable.ic_error)
+                        RequestOptions.placeholderOf(R.drawable.ic_loading_image)
+                            .error(R.drawable.ic_error_image)
                     ).centerCrop().into(imgPosterPopular)
                 tvTitlePopular.text = data.title
                 tvReleaseDatePopular.text = DateFormat.format(data.releaseDate)

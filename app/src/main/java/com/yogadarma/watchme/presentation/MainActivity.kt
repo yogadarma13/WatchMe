@@ -18,7 +18,6 @@ class MainActivity : AppCompatActivity() {
     private lateinit var navController: NavController
     private lateinit var navView: BottomNavigationView
     private lateinit var appBarConfiguration: AppBarConfiguration
-    private lateinit var settingItem: MenuItem
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -37,11 +36,9 @@ class MainActivity : AppCompatActivity() {
             if (destination.id == R.id.movieFragment || destination.id == R.id.tvShowFragment || destination.id == R.id.favoriteFragment) {
                 binding.toolbar.visibility = View.VISIBLE
                 navView.visibility = View.VISIBLE
-                settingItem.isVisible = true
-            } else if (destination.id == R.id.settingFragment){
+            } else if (destination.id == R.id.settingFragment) {
                 binding.toolbar.visibility = View.VISIBLE
                 navView.visibility = View.GONE
-                settingItem.isVisible = false
             } else {
                 binding.toolbar.visibility = View.GONE
                 navView.visibility = View.GONE
@@ -64,7 +61,6 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.main_menu, menu)
-        settingItem = menu!!.findItem(R.id.settingFragment)
         return super.onCreateOptionsMenu(menu)
     }
 

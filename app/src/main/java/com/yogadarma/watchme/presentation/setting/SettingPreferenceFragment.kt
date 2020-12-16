@@ -7,7 +7,7 @@ import androidx.preference.Preference
 import androidx.preference.PreferenceFragmentCompat
 import com.yogadarma.watchme.R
 
-class SettingPreferenceFragment: PreferenceFragmentCompat() {
+class SettingPreferenceFragment : PreferenceFragmentCompat() {
 
     private lateinit var languagePreference: Preference
 

@@ -78,8 +78,8 @@ class DetailFragment : Fragment() {
     private fun setDetail(movie: Movie) {
         Glide.with(binding.root)
             .load("https://image.tmdb.org/t/p/w220_and_h330_face${movie.image}").apply(
-                RequestOptions.placeholderOf(R.drawable.ic_loading)
-                    .error(R.drawable.ic_error)
+                RequestOptions.placeholderOf(R.drawable.ic_loading_image)
+                    .error(R.drawable.ic_error_image)
             ).centerCrop().into(binding.imgDetailPoster)
 
         binding.tvDetailTitle.text = movie.title

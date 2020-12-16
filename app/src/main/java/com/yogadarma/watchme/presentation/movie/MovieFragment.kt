@@ -49,14 +49,14 @@ class MovieFragment : Fragment() {
             if (response != null) {
                 when (response) {
                     is Resource.Loading -> {
-                        showProgressbar()
+                        loadingVisibility()
                     }
                     is Resource.Success -> {
-                        dismissProgressbar()
+                        successVisibility()
                         nowPlayingAdapter.setData(response.data)
                     }
                     is Resource.Error -> {
-                        dismissProgressbar()
+                        errorVisibility()
                         Toast.makeText(context, response.message, Toast.LENGTH_SHORT).show()
                     }
                 }
@@ -67,14 +67,14 @@ class MovieFragment : Fragment() {
             if (response != null) {
                 when (response) {
                     is Resource.Loading -> {
-                        showProgressbar()
+                        loadingVisibility()
                     }
                     is Resource.Success -> {
-                        dismissProgressbar()
+                        successVisibility()
                         popularAdapter.setData(response.data)
                     }
                     is Resource.Error -> {
-                        dismissProgressbar()
+                        errorVisibility()
                         Toast.makeText(context, response.message, Toast.LENGTH_SHORT).show()
                     }
                 }
@@ -94,14 +94,22 @@ class MovieFragment : Fragment() {
         }
     }
 
-    private fun showProgressbar() {
+    private fun loadingVisibility() {
         binding.progressbar.visibility = View.VISIBLE
         binding.movieContainer.visibility = View.GONE
+        binding.viewError.root.visibility = View.GONE
     }
 
-    private fun dismissProgressbar() {
+    private fun successVisibility() {
         binding.progressbar.visibility = View.GONE
         binding.movieContainer.visibility = View.VISIBLE
+        binding.viewError.root.visibility = View.GONE
+    }
+
+    private fun errorVisibility() {
+        binding.progressbar.visibility = View.GONE
+        binding.movieContainer.visibility = View.GONE
+        binding.viewError.root.visibility = View.VISIBLE
     }
 
     private fun navigateToDetail(movie: Movie) {
