@@ -32,4 +32,8 @@ class SettingFragment : Fragment() {
         menu.clear()
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

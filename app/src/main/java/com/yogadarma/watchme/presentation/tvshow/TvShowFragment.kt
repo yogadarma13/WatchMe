@@ -117,4 +117,9 @@ class TvShowFragment : Fragment() {
         findNavController().navigate(navigate)
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
 }

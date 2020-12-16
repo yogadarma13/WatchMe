@@ -86,7 +86,7 @@ class DetailFragment : Fragment() {
         binding.tvDetailGenre.text = movie.genre
         binding.tvDetailRating.text = movie.rating
         binding.tvDetailDate.text = DateFormat.format(movie.releaseDate)
-        binding.tvDetailDuration.text = "${movie.duration} minutes"
+        binding.tvDetailDuration.text = resources.getString(R.string.duration, movie.duration)
         binding.tvDetailSynopsis.text = movie.synopsis
 
         var favoriteStatus = movie.isFavorite
@@ -122,6 +122,11 @@ class DetailFragment : Fragment() {
 
     private fun dismissProgressbar() {
         binding.progressBar.visibility = View.GONE
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 
 }

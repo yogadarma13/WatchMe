@@ -117,4 +117,9 @@ class MovieFragment : Fragment() {
         findNavController().navigate(navigate)
     }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
+
 }
