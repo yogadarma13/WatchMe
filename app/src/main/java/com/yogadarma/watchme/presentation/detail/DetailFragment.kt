@@ -85,7 +85,8 @@ class DetailFragment : Fragment() {
         binding.tvDetailTitle.text = movie.title
         binding.tvDetailGenre.text = movie.genre
         binding.tvDetailRating.text = movie.rating
-        binding.tvDetailDate.text = DateFormat.format(movie.releaseDate)
+        binding.tvDetailDate.text =
+            if (movie.releaseDate.isEmpty()) "-" else DateFormat.format(movie.releaseDate)
         binding.tvDetailDuration.text = resources.getString(R.string.duration, movie.duration)
         binding.tvDetailSynopsis.text = movie.synopsis
 
