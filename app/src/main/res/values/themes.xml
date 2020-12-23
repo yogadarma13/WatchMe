@@ -19,6 +19,7 @@
         <item name="circleBackground">@drawable/circle_white</item>
         <item name="splashLogo">@drawable/app_logo_white</item>
         <item name="tabIndicatorColor">@color/white</item>
+        <item name="bottomNavigationSelector">@drawable/bottom_navigation_selector_red</item>
     </style>
 
     <style name="Theme.WatchMe.Toolbar" parent="Theme.WatchMe">

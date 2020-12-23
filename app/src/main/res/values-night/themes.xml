@@ -17,5 +17,6 @@
         <item name="circleBackground">@drawable/circle_black</item>
         <item name="splashLogo">@drawable/app_logo</item>
         <item name="tabIndicatorColor">@color/red</item>
+        <item name="bottomNavigationSelector">@drawable/bottom_navigation_selector_black</item>
     </style>
 </resources>

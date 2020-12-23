@@ -47,7 +47,8 @@ class PopularAdapter : RecyclerView.Adapter<PopularAdapter.ViewHolder>() {
                             .error(R.drawable.ic_error_image)
                     ).centerCrop().into(imgPosterPopular)
                 tvTitlePopular.text = data.title
-                tvReleaseDatePopular.text = DateFormat.format(data.releaseDate)
+                tvReleaseDatePopular.text =
+                    if (data.releaseDate.isEmpty()) "-" else DateFormat.format(data.releaseDate)
             }
         }
 

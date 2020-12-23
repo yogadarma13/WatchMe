@@ -48,7 +48,8 @@ class FavoriteAdapter : RecyclerView.Adapter<FavoriteAdapter.ViewHolder>() {
 
                 tvCategoryFavorite.text = data.category
                 tvTitleFavorite.text = data.title
-                tvReleaseDateFavorite.text = DateFormat.format(data.releaseDate)
+                tvReleaseDateFavorite.text =
+                    if (data.releaseDate.isEmpty()) "-" else DateFormat.format(data.releaseDate)
                 tvGenreFavorite.text = data.genre
             }
         }

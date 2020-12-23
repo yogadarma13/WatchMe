@@ -3,4 +3,5 @@
     <attr name="imageShadow" format="reference" />
     <attr name="circleBackground" format="reference" />
     <attr name="splashLogo" format="reference" />
+    <attr name="bottomNavigationSelector" format="reference" />
 </resources>

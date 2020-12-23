@@ -47,7 +47,8 @@ class NowPlayingAdapter : RecyclerView.Adapter<NowPlayingAdapter.ViewHolder>() {
                             .error(R.drawable.ic_error_image)
                     ).centerCrop().into(imgPosterNowPlaying)
                 tvTitleNowPlaying.text = data.title
-                tvReleaseDateNowPlaying.text = DateFormat.format(data.releaseDate)
+                tvReleaseDateNowPlaying.text =
+                    if (data.releaseDate.isEmpty()) "-" else DateFormat.format(data.releaseDate)
             }
         }
 
