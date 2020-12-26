@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
@@ -21,6 +22,18 @@ class MovieFragment : Fragment() {
     private var _binding: FragmentMovieBinding? = null
     private val binding get() = _binding!!
     private val movieViewModel: MovieViewModel by viewModel()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        val callback: OnBackPressedCallback = object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                activity?.finishAfterTransition()
+            }
+        }
+
+        requireActivity().onBackPressedDispatcher.addCallback(this, callback)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -121,5 +134,4 @@ class MovieFragment : Fragment() {
         super.onDestroyView()
         _binding = null
     }
-
 }
