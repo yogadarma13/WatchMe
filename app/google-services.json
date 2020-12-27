@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "332440135703",
+    "project_id": "watch-me-66519",
+    "storage_bucket": "watch-me-66519.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:332440135703:android:d3e051ddbb87832f29d452",
+        "android_client_info": {
+          "package_name": "com.yogadarma.watchme"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "332440135703-pu03s6h38ettf1dqn8a2kogffqbg3e23.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.yogadarma.watchme",
+            "certificate_hash": "3092237caa4fee0eff71dda4ccd62369ad73810c"
+          }
+        },
+        {
+          "client_id": "332440135703-1t027oddgmr35j4v1a6277039nju4ujq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAL7nOnUEgtij6FgfQiOP6VUGKae3hDSg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "332440135703-1t027oddgmr35j4v1a6277039nju4ujq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
