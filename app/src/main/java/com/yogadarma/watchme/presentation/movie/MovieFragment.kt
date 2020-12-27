@@ -23,6 +23,8 @@ class MovieFragment : Fragment() {
     private val binding get() = _binding!!
     private val movieViewModel: MovieViewModel by viewModel()
 
+    private var isSuccess = true
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -65,10 +67,16 @@ class MovieFragment : Fragment() {
                         loadingVisibility()
                     }
                     is Resource.Success -> {
-                        successVisibility()
-                        nowPlayingAdapter.setData(response.data)
+                        if (isSuccess) {
+                            binding.shimmerNowPlaying.visibility = View.GONE
+                            successVisibility()
+                            nowPlayingAdapter.setData(response.data)
+                        } else {
+                            errorVisibility()
+                        }
                     }
                     is Resource.Error -> {
+                        isSuccess = false
                         errorVisibility()
                         Toast.makeText(context, response.message, Toast.LENGTH_SHORT).show()
                     }
@@ -83,10 +91,16 @@ class MovieFragment : Fragment() {
                         loadingVisibility()
                     }
                     is Resource.Success -> {
-                        successVisibility()
-                        popularAdapter.setData(response.data)
+                        if (isSuccess) {
+                            binding.shimmerPopular.visibility = View.GONE
+                            successVisibility()
+                            popularAdapter.setData(response.data)
+                        } else {
+                            errorVisibility()
+                        }
                     }
                     is Resource.Error -> {
+                        isSuccess = false
                         errorVisibility()
                         Toast.makeText(context, response.message, Toast.LENGTH_SHORT).show()
                     }
@@ -108,20 +122,22 @@ class MovieFragment : Fragment() {
     }
 
     private fun loadingVisibility() {
-        binding.progressbar.visibility = View.VISIBLE
-        binding.movieContainer.visibility = View.GONE
+        binding.shimmerNowPlaying.visibility = View.VISIBLE
+        binding.shimmerPopular.visibility = View.VISIBLE
         binding.viewError.root.visibility = View.GONE
     }
 
     private fun successVisibility() {
-        binding.progressbar.visibility = View.GONE
-        binding.movieContainer.visibility = View.VISIBLE
         binding.viewError.root.visibility = View.GONE
     }
 
     private fun errorVisibility() {
-        binding.progressbar.visibility = View.GONE
-        binding.movieContainer.visibility = View.GONE
+        binding.labelNowPlayingMovie.visibility = View.GONE
+        binding.labelPopularMovie.visibility = View.GONE
+        binding.shimmerNowPlaying.visibility = View.GONE
+        binding.shimmerPopular.visibility = View.GONE
+        binding.rvNowPlayingMovie.visibility = View.GONE
+        binding.rvPopularMovie.visibility = View.GONE
         binding.viewError.root.visibility = View.VISIBLE
     }
 
