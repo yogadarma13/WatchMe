@@ -9,6 +9,11 @@ dependencies {
     implementation "androidx.multidex:multidex:$multidex_version"
     implementation "com.google.android.material:material:$material_version"
 
+    // Firebase
+    implementation platform("com.google.firebase:firebase-bom:$firebase_bom_version")
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-crashlytics-ktx'
+
     // Glide
     implementation "com.github.bumptech.glide:glide:$glide_version"
 
@@ -30,4 +35,7 @@ dependencies {
 
     // Lottie
     implementation "com.airbnb.android:lottie:$lottie_version"
+
+    // Timber
+    implementation "com.jakewharton.timber:timber:$timber_version"
 }

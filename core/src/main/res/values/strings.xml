@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_now_playing_movie">Failed to get data of now playing movie</string>
+    <string name="error_now_playing_tv_show">Failed to get data of now playing tv show</string>
+    <string name="error_popular_movie">Failed to get data of popular movie</string>
+    <string name="error_popular_tv_show">Failed to get data of popular tv show</string>
+    <string name="error_detail">Failed to get detail movie</string>
+</resources>

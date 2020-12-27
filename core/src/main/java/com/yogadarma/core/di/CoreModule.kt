@@ -60,7 +60,7 @@ val networkModule = module {
 
 val repositoryModule = module {
     single { LocalDataSource(get()) }
-    single { RemoteDataSource(get()) }
+    single { RemoteDataSource(get(), get()) }
     single { AppExecutors() }
     single<IMovieRepository> {
         MovieRepository(

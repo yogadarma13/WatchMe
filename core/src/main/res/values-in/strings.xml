@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="error_now_playing_movie">Gagal mendapatkan data film yang sedang tayang</string>
+    <string name="error_now_playing_tv_show">Gagal mendapatkan data serial tv yang sedang tayang</string>
+    <string name="error_popular_movie">Gagal mendapatkan data film yang populer</string>
+    <string name="error_popular_tv_show">Gagal mendapatkan serial tv yang populer</string>
+    <string name="error_detail">Gagal mendapatkan detail dari film</string>
+</resources>

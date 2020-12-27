@@ -1,5 +1,7 @@
 package com.yogadarma.core.data.source.remote
 
+import android.content.Context
+import com.yogadarma.core.R
 import com.yogadarma.core.data.source.remote.network.ApiResponse
 import com.yogadarma.core.data.source.remote.network.ApiService
 import com.yogadarma.core.data.source.remote.response.DetailMovieResponse
@@ -10,8 +12,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.flow.flowOn
+import timber.log.Timber
 
-class RemoteDataSource(private val apiService: ApiService) {
+class RemoteDataSource(private val apiService: ApiService, private val context: Context) {
 
     suspend fun getAllNowPlayingMovie(): Flow<ApiResponse<List<MovieResponse>>> {
         return flow {
@@ -24,7 +27,8 @@ class RemoteDataSource(private val apiService: ApiService) {
                     emit(ApiResponse.Empty)
                 }
             } catch (e: Exception) {
-                emit(ApiResponse.Error(e.toString()))
+                Timber.e(e.message.toString())
+                emit(ApiResponse.Error(context.getString(R.string.error_now_playing_movie)))
             }
         }.flowOn(Dispatchers.IO)
     }
@@ -40,7 +44,8 @@ class RemoteDataSource(private val apiService: ApiService) {
                     emit(ApiResponse.Empty)
                 }
             } catch (e: Exception) {
-                emit(ApiResponse.Error(e.toString()))
+                Timber.e(e.message.toString())
+                emit(ApiResponse.Error(context.getString(R.string.error_popular_movie)))
             }
         }.flowOn(Dispatchers.IO)
     }
@@ -56,7 +61,8 @@ class RemoteDataSource(private val apiService: ApiService) {
                     emit(ApiResponse.Empty)
                 }
             } catch (e: Exception) {
-                emit(ApiResponse.Error(e.toString()))
+                Timber.e(e.message.toString())
+                emit(ApiResponse.Error(context.getString(R.string.error_now_playing_tv_show)))
             }
         }.flowOn(Dispatchers.IO)
     }
@@ -72,7 +78,8 @@ class RemoteDataSource(private val apiService: ApiService) {
                     emit(ApiResponse.Empty)
                 }
             } catch (e: Exception) {
-                emit(ApiResponse.Error(e.toString()))
+                Timber.e(e.message.toString())
+                emit(ApiResponse.Error(context.getString(R.string.error_popular_tv_show)))
             }
         }.flowOn(Dispatchers.IO)
     }
@@ -87,7 +94,8 @@ class RemoteDataSource(private val apiService: ApiService) {
                     emit(ApiResponse.Empty)
                 }
             } catch (e: Exception) {
-                emit(ApiResponse.Error(e.toString()))
+                Timber.e(e.message.toString())
+                emit(ApiResponse.Error(context.getString(R.string.error_detail)))
             }
         }.flowOn(Dispatchers.IO)
     }
@@ -102,7 +110,8 @@ class RemoteDataSource(private val apiService: ApiService) {
                     emit(ApiResponse.Empty)
                 }
             } catch (e: Exception) {
-                emit(ApiResponse.Error(e.toString()))
+                Timber.e(e.message.toString())
+                emit(ApiResponse.Error(context.getString(R.string.error_detail)))
             }
         }.flowOn(Dispatchers.IO)
     }
